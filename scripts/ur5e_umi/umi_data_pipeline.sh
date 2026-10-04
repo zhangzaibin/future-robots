@@ -1,0 +1,1 @@
+uv run examples/umi/convert_umi_data_to_lerobot.py --zarr_path /18141169908/zhangzaibin/multivla-pi0/dataset/umi_dataset/dataset.zarr.zip --output_dir /18141169908/zhangzaibin/multivla-pi0/dataset/umi_ur_lerobot/ --task_prompt "Handover the bottle from right to left." --downsample 2

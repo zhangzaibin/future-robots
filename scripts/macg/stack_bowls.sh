@@ -1,0 +1,2 @@
+XLA_PYTHON_CLIENT_MEM_FRACTION=1 uv run scripts/train.py threestackcubes_pi0_moa_wait09_mask05_delta --exp-name threestackcubes_pi0_moa_wait09_mask05_delta --overwrite
+XLA_PYTHON_CLIENT_MEM_FRACTION=1 uv run scripts/train.py threestackcubes_pi0_moa_wait09_nomask_delta --exp-name threestackcubes_pi0_moa_wait09_nomask_delta --overwrite

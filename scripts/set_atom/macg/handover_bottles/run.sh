@@ -1,0 +1,2 @@
+XLA_PYTHON_CLIENT_MEM_FRACTION=1 uv run scripts/train.py macg_two_arms_handover_bottles_pi0_moa_wait00_mask05_LCT32_delta --exp-name macg_two_arms_handover_bottles_pi0_moa_wait00_mask05_LCT32_delta --overwrite
+XLA_PYTHON_CLIENT_MEM_FRACTION=1 uv run scripts/train.py macg_two_arms_handover_bottles_pi0_moa_wait00_mask05_delta --exp-name macg_two_arms_handover_bottles_pi0_moa_wait00_mask05_delta --overwrite

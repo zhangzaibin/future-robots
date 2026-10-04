@@ -1,0 +1,1 @@
+uv run scripts/train.py aevla_pi05_two_arms_multi_task_suffix_only --exp-name aevla_pi05_two_arms_multi_task_suffix_only --overwrite

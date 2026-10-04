@@ -1,0 +1,1 @@
+XLA_PYTHON_CLIENT_MEM_FRACTION=1 uv run scripts/train.py pi05_three_arms_place_objects --exp-name pi05_three_arms_place_objects --overwrite

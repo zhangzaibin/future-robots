@@ -1,0 +1,1 @@
+CUDA_VISIBLE_DEVICES=0 python server_agent0.py --config macg_two_arms_stack_bowl_pi05_wait03_mask06_delta --checkpoint_dir checkpoints/pi05_two_arms_stack_bowl_wait03_mask06_delta/macg_two_arms_stack_bowl_pi05_wait03_mask06_delta/9999 --port 20022

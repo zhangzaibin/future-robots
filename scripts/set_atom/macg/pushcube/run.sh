@@ -1,0 +1,4 @@
+uv run scripts/compute_norm_stats.py --config-name macg_two_arms_push_cube_pi05_moa_wait03_mask06_delta
+XLA_PYTHON_CLIENT_MEM_FRACTION=1 uv run scripts/train.py macg_two_arms_push_cube_pi05_moa_wait03_mask06_delta --exp-name macg_two_arms_push_cube_pi05_moa_wait03_mask06_delta --overwrite
+uv run scripts/compute_norm_stats.py --config-name macg_two_arms_push_cube_pi05_wait03_mask06_delta
+XLA_PYTHON_CLIENT_MEM_FRACTION=1 uv run scripts/train.py macg_two_arms_push_cube_pi05_wait03_mask06_delta --exp-name macg_two_arms_push_cube_pi05_wait03_mask06_delta --overwrite

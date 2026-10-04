@@ -1,0 +1,1 @@
+python server_agent0.py --config pi0fast_two_arms_multi_task --checkpoint_dir /18141169908/zhangzaibin/multivla-pi0/checkpoints/twoarms/pi0fast_two_arms_multi_task/pi0fast_two_arms_multi_task/29999 --port 20011

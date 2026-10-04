@@ -1,0 +1,1 @@
+CUDA_VISIBLE_DEVICES=1 python server_agent0.py --config macg_two_arms_stack_bowl_pi0_moa_wait03_mask06_delta --checkpoint_dir /18141169908/zhangzaibin/multivla-pi0/checkpoints/AEVLA_pi0_two_arms_stack_bowl_wait03_mask06_delta/macg_two_arms_stack_bowl_pi0_moa_wait03_mask06_delta/9999 --port 20019

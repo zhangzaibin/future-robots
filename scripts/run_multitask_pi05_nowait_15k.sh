@@ -1,0 +1,2 @@
+uv run scripts/compute_norm_stats.py --config-name aevla_pi05_two_arms_multi_task_nowait_15k
+XLA_PYTHON_CLIENT_MEM_FRACTION=1 uv run scripts/train.py aevla_pi05_two_arms_multi_task_nowait_15k --exp-name aevla_pi05_two_arms_multi_task_nowait_15k --overwrite

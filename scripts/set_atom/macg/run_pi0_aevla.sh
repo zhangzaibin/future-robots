@@ -1,0 +1,1 @@
+XLA_PYTHON_CLIENT_MEM_FRACTION=1 uv run scripts/train.py macg_two_arms_stack_bowl_pi0_moa_wait03_mask06_delta --exp-name macg_two_arms_stack_bowl_pi0_moa_wait03_mask06_delta --overwrite

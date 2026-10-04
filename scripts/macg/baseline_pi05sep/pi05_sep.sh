@@ -1,0 +1,2 @@
+XLA_PYTHON_CLIENT_MEM_FRACTION=1 uv run scripts/train.py stackbowls_pi05_separate_left_wait03_mask05_delta --exp-name stackbowls_pi05_separate_left_wait03_mask05_delta --overwrite
+XLA_PYTHON_CLIENT_MEM_FRACTION=1 uv run scripts/train.py stackbowls_pi05_separate_right_wait03_mask05_delta --exp-name stackbowls_pi05_separate_right_wait03_mask05_delta --overwrite
