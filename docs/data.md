@@ -2,6 +2,28 @@
 
 [Documentation](README.md) · [Training](training.md) · [Real-world data](real_world.md)
 
+## Public training dataset
+
+Download [**MrBean2024/macg_data**](https://huggingface.co/datasets/MrBean2024/macg_data) from Hugging Face using the [README download command](../README.md#2-download-the-training-data). The release is already converted to LeRobot v2.1, with images embedded in parquet files, and can be placed directly at `dataset/multi_task_combined` for the simulation multi-task recipes.
+
+According to the public [dataset metadata](https://huggingface.co/datasets/MrBean2024/macg_data/blob/main/meta/info.json), it contains 700 episodes, 395,759 frames at 30 FPS, and 34 instruction entries, with all 700 episodes in the training split. The metadata identifies the robot type as `panda`. Each frame includes `global_image`, `image_agent0`, and `image_agent1` at 224 × 224 resolution, joint and gripper states for both arms, 16-dimensional actions, and a phase label.
+
+```text
+dataset/multi_task_combined/
+├── data/chunk-000/episode_*.parquet
+├── meta/
+│   ├── info.json
+│   ├── episodes.jsonl
+│   ├── episodes_stats.jsonl
+│   ├── tasks.jsonl
+│   └── skill_labels.jsonl
+└── norm_stats.json
+```
+
+`meta/skill_labels.jsonl` maps task indices to per-arm skill IDs and atomic instructions for full AE-VLA training. Preserve its correspondence with `meta/tasks.jsonl`; changes to task indexing require matching label updates. The training recipes recompute normalization by default. Serving the released model uses its checkpoint's own assets.
+
+Set `DATASET_DIR=/path/to/download` to train from another location. This public upload is the training dataset; use the [paper and evaluation guide](evaluation.md) for held-out composition definitions. Keep the Hub revision in experiment records. To prepare new trajectories, continue below.
+
 ## Simulation data
 
 The simulation workflow is **raw HDF5 → task-specific phase labels → LeRobot conversion → multi-task merge → normalization**. Phase boundaries and atomic instructions are task-dependent; inspect the generated visualizations before training.

@@ -2,13 +2,15 @@
 
 [Documentation](README.md) · [Training](training.md) · [Deployment](deployment.md)
 
-AE-VLA extends Future's research into both evaluation and methods for compositional generalization. This guide defines what to record for a reproducible comparison with the code currently available.
+The [ACG-Bench / AE-VLA paper](https://arxiv.org/abs/2610.06184) studies arm-wise compositional generalization in dual-arm policies. ACG-Bench evaluates reordering, synchronization, their combination, and cross-task composition. All methods receive the same per-arm atomic prompts; success includes physical milestones and the specified order or timing constraints. This guide defines what to record for a reproducible comparison with the code currently available.
 
 ## Release scope
 
-This snapshot includes training configurations, task-specific data preparation, policy serving, attention ablations, and Skill-LoRA experiments. It does **not** include a finalized AE-VLA benchmark split manifest, a complete simulator/robot rollout harness, released benchmark checkpoints, or quantitative result tables. The serving scripts expose policies; starting a server does not run an evaluation.
+This snapshot includes training configurations, task-specific data preparation, policy serving, attention ablations, and SkillLoRA experiments. The [training data](https://huggingface.co/datasets/MrBean2024/macg_data) and [full AE-VLA checkpoint](https://huggingface.co/MrBean2024/AE-VLA-full) are publicly available on Hugging Face. The [README](../README.md#evaluation) summarizes published results, and the [lab blog](https://zhangzaibin.github.io/evolving-machines/research/arm-wise-cg/) presents demonstrations.
 
-The protocol below is a recommended reporting structure, not a claim about AE-VLA's final paper protocol or measured performance. MA-VLA's published settings should be taken from its [paper](https://arxiv.org/abs/2608.25864).
+The code snapshot does **not** bundle an explicit held-out benchmark split manifest or a complete simulator/robot rollout harness. The public dataset metadata describes the training split; it does not replace the paper's evaluation conditions. Serving scripts expose policies; starting a server does not run an evaluation.
+
+Use the [AE-VLA paper](https://arxiv.org/abs/2610.06184) for benchmark conditions, success criteria, and reported results, and the [MA-VLA paper](https://arxiv.org/abs/2608.25864) for its original experimental settings. The protocol below is a reporting checklist for experiments with this code.
 
 ## Compositional generalization protocol
 

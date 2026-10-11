@@ -4,6 +4,17 @@
 
 Use the exact training configuration and a complete checkpoint **step directory**, including `params/` and `assets/`. Inference loads statistics from the checkpoint. Stochastic training augmentation is disabled during inference, preserving physical arm order.
 
+## Released AE-VLA checkpoint
+
+The public [**MrBean2024/AE-VLA-full**](https://huggingface.co/MrBean2024/AE-VLA-full) model uses `aevla_pi05_skill_lora_two_arms_multitask` (arm-token grouping, SkillLoRA, and arm-wise attention). Follow the [README download command](../README.md#4-run-the-released-checkpoint), then serve the included step directory:
+
+```bash
+CHECKPOINT_DIR=checkpoints/AE-VLA-full/aevla_pi05_skill_lora_two_arms_multitask/29999 \
+  PORT=20011 bash scripts/serve_recipe.sh aevla_pi05_skill_lora_two_arms_multitask
+```
+
+The downloaded tree includes `params/` and `assets/multi_task_combined/norm_stats.json` inside step `29999`. Point to that step, not the Hub download root or `params/` alone. The checkpoint uses the simulation two-arm layout (7 joints + 1 gripper per arm); SO101 has a different embodiment and needs its matching configuration and weights. Training data and SkillLoRA label files are not needed by this serving path.
+
 ## Unified policy
 
 For the existing HTTP robot-client protocol:

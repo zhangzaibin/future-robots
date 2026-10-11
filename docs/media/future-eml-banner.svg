@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400" role="img" aria-labelledby="title desc">
+  <title id="title">Future — Evolving Machines Lab</title>
+  <desc id="desc">Compositional robot intelligence. Two arm-like paths connect reusable skill nodes, in the lab's warm paper, charcoal, and terracotta palette.</desc>
+  <rect width="1200" height="400" rx="16" fill="#f8f7f4"/>
+  <g transform="translate(48 36)">
+    <rect width="40" height="40" rx="8" fill="#242623"/>
+    <path d="M8 31V10l12 12L32 8v23" fill="none" stroke="#f8f7f4" stroke-width="2.5"/>
+    <g fill="#ce7256" stroke="#242623" stroke-width="1.5">
+      <circle cx="8" cy="10" r="3.2"/><circle cx="20" cy="22" r="3.2"/>
+      <circle cx="32" cy="8" r="3.2"/><circle cx="32" cy="31" r="3.2"/>
+    </g>
+  </g>
+  <g font-family="Helvetica Neue, Helvetica, Arial, sans-serif" fill="#242623">
+    <text x="103" y="62" font-size="20" font-weight="500">Evolving Machines Lab</text>
+    <text x="48" y="210" font-size="112" font-weight="500" letter-spacing="-6">Future<tspan fill="#ce7256">.</tspan></text>
+    <text x="52" y="259" font-size="26">Compositional robot intelligence.</text>
+  </g>
+  <g font-family="SFMono-Regular, Consolas, Liberation Mono, monospace" font-size="13" fill="#686b65" letter-spacing="1.2">
+    <text x="1152" y="61" text-anchor="end">EML / SYSTEM 03</text>
+    <text x="52" y="299">ATOMIC SKILLS → COLLABORATION → GENERALIZATION</text>
+  </g>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="930" cy="209" rx="154" ry="117" stroke="#deded6" stroke-width="1"/>
+    <ellipse cx="930" cy="209" rx="117" ry="154" transform="rotate(45 930 209)" stroke="#deded6" stroke-width="1"/>
+    <path d="M775 274L827 164L930 209" stroke="#242623" stroke-width="8"/>
+    <path d="M1085 274L1033 164L930 209" stroke="#ce7256" stroke-width="8"/>
+    <path d="M930 209L930 111M930 209L867 307M930 209L993 307" stroke="#aaa99f" stroke-width="1.5" stroke-dasharray="4 7"/>
+  </g>
+  <g stroke="#f8f7f4" stroke-width="4">
+    <circle cx="775" cy="274" r="10" fill="#242623"/>
+    <circle cx="827" cy="164" r="13" fill="#242623"/>
+    <circle cx="1085" cy="274" r="10" fill="#ce7256"/>
+    <circle cx="1033" cy="164" r="13" fill="#ce7256"/>
+    <circle cx="930" cy="209" r="19" fill="#ce7256"/>
+    <circle cx="930" cy="111" r="7" fill="#aaa99f"/>
+    <circle cx="867" cy="307" r="7" fill="#aaa99f"/>
+    <circle cx="993" cy="307" r="7" fill="#aaa99f"/>
+  </g>
+  <path d="M48 342H1152" stroke="#d6d6cf"/>
+  <g font-family="SFMono-Regular, Consolas, Liberation Mono, monospace" font-size="12" fill="#686b65" letter-spacing="1">
+    <text x="48" y="373">PHYSICAL WORLD / EMBODIED INTELLIGENCE</text>
+    <text x="1152" y="373" text-anchor="end">BUILD WHAT EVOLVES.</text>
+  </g>
+</svg>

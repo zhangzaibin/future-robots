@@ -18,7 +18,13 @@ This is the current two-arm, multi-task Pi0.5 implementation of the MA-VLA recip
 
 ## AE-VLA
 
-The AE-VLA work studies evaluation and methods for compositional generalization. The main recipe uses `Pi0MultiAgentAttnConfig`, arm-wise attention, and per-agent prompts:
+The [AE-VLA paper](https://arxiv.org/abs/2610.06184) combines arm-token grouping, SkillLoRA, and arm-wise attention. The **full model** uses `Pi0SkillLoRAComposerConfig`; this is also the architecture of the [public checkpoint](https://huggingface.co/MrBean2024/AE-VLA-full):
+
+```bash
+EXP_NAME=aevla_full_run1 bash scripts/macg_new/train_skill_lora.sh
+```
+
+The [public training dataset](data.md#public-training-dataset) includes `meta/skill_labels.jsonl` for router supervision. The attention-only variant uses `Pi0MultiAgentAttnConfig`, without SkillLoRA:
 
 ```bash
 EXP_NAME=aevla_run1 bash scripts/macg_new/train_aevla.sh
@@ -28,12 +34,12 @@ EXP_NAME=aevla_run1 bash scripts/macg_new/train_aevla.sh
 
 | Variant | Configuration | Entry |
 | --- | --- | --- |
-| Arm-wise attention | `aevla_pi05_two_arms_multi_task` | [`train_aevla.sh`](../scripts/macg_new/train_aevla.sh) |
+| **Full AE-VLA: SkillLoRA + arm-wise attention** | `aevla_pi05_skill_lora_two_arms_multitask` | [`train_skill_lora.sh`](../scripts/macg_new/train_skill_lora.sh) |
+| Arm-wise attention, without SkillLoRA | `aevla_pi05_two_arms_multi_task` | [`train_aevla.sh`](../scripts/macg_new/train_aevla.sh) |
 | Full attention, per-agent token groups | `aevla_pi05_two_arms_multi_task_full_attn` | [`train_aevla_pi05_two_arms_multi_task_full_attn.sh`](../scripts/macg_new/train/train_aevla_pi05_two_arms_multi_task_full_attn.sh) |
-| Skill-LoRA composition | `aevla_pi05_skill_lora_two_arms_multitask` | [`train_skill_lora.sh`](../scripts/macg_new/train_skill_lora.sh) |
 | Skill-LoRA with full attention | `aevla_pi05_skill_lora_two_arms_multitask_full_attn` | [`train_fullattn.sh`](../scripts/macg_new/train_fullattn.sh) |
 
-The older `train_tokengrouponly.sh` name is an alias for the full-attention, per-agent-token configuration. Skill-LoRA additionally needs `meta/skill_labels.jsonl`; follow the [Skill-LoRA notes](skill_lora.md) before selecting that recipe. The ordinary AE-VLA attention recipe does not require that file.
+The older `train_tokengrouponly.sh` name is an alias for the full-attention, per-agent-token configuration. When preparing your own data, include `meta/skill_labels.jsonl` for SkillLoRA and follow the [Skill-LoRA notes](skill_lora.md). The attention-only recipe does not require that file. See [released checkpoint deployment](deployment.md#released-ae-vla-checkpoint) to run the full model without training.
 
 ## Separate Pi05
 
