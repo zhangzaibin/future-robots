@@ -1,44 +1,72 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400" role="img" aria-labelledby="title desc">
   <title id="title">Future — Evolving Machines Lab</title>
-  <desc id="desc">Compositional robot intelligence. Two arm-like paths connect reusable skill nodes, in the lab's warm paper, charcoal, and terracotta palette.</desc>
-  <rect width="1200" height="400" rx="16" fill="#f8f7f4"/>
-  <g transform="translate(48 36)">
-    <rect width="40" height="40" rx="8" fill="#242623"/>
-    <path d="M8 31V10l12 12L32 8v23" fill="none" stroke="#f8f7f4" stroke-width="2.5"/>
-    <g fill="#ce7256" stroke="#242623" stroke-width="1.5">
-      <circle cx="8" cy="10" r="3.2"/><circle cx="20" cy="22" r="3.2"/>
-      <circle cx="32" cy="8" r="3.2"/><circle cx="32" cy="31" r="3.2"/>
+  <desc id="desc">Future: an open ecosystem for agentic, open-ended VLA policies. The grid, six connected nodes, dashed arcs, and EML mark use the original artwork from the Evolving Machines Lab website.</desc>
+  <!-- Source: https://zhangzaibin.github.io/evolving-machines/
+       Future project card (SYSTEM 03) and site-header brand mark.
+       Original SVG geometry and CSS colors are preserved; the card is arranged
+       horizontally for the README. Styles are inlined for standalone rendering. -->
+  <defs>
+    <clipPath id="card-clip"><rect x="0.5" y="0.5" width="1199" height="399" rx="4"/></clipPath>
+  </defs>
+  <g clip-path="url(#card-clip)">
+    <rect width="1200" height="400" fill="#f8f7f4"/>
+    <rect width="600" height="400" fill="#eee4dc"/>
+    <path d="M600 0V400" stroke="#242623" stroke-opacity="0.13"/>
+
+    <!-- Unchanged 700 × 480 Future diagram from the official project card. -->
+    <svg x="24" y="32" width="552" height="352" viewBox="0 0 700 480" color="#242623" aria-hidden="true">
+      <defs>
+        <pattern id="grid-3" width="40" height="40" patternUnits="userSpaceOnUse">
+          <path d="M40 0H0V40" fill="none" stroke="currentColor" stroke-width="0.6" opacity="0.16"/>
+        </pattern>
+      </defs>
+      <rect width="700" height="480" fill="url(#grid-3)"/>
+      <g id="future-motion">
+        <path d="M102 356C196 97 439 62 604 207" fill="none" stroke="currentColor" stroke-width="1.1" stroke-dasharray="3 8" vector-effect="non-scaling-stroke"/>
+        <path d="M102 356c168 34 344-13 502-149" fill="none" stroke="currentColor" stroke-width="1.1" stroke-dasharray="3 8" opacity="0.28" vector-effect="non-scaling-stroke"/>
+        <path d="M102 356l104-34 88-96 115 20 88-101 107 62" fill="none" stroke="currentColor" stroke-width="1.1" vector-effect="non-scaling-stroke"/>
+        <circle cx="102" cy="356" r="14" fill="#ce7256" stroke="#242623" stroke-width="1.5"/>
+        <circle cx="206" cy="322" r="8" fill="#f8f7f4" stroke="#242623" stroke-width="1.5"/>
+        <circle cx="294" cy="226" r="12" fill="#f8f7f4" stroke="#242623" stroke-width="1.5"/>
+        <circle cx="409" cy="246" r="18" fill="#ce7256" stroke="#242623" stroke-width="1.5"/>
+        <circle cx="497" cy="145" r="9" fill="#f8f7f4" stroke="#242623" stroke-width="1.5"/>
+        <circle cx="604" cy="207" r="14" fill="#f8f7f4" stroke="#242623" stroke-width="1.5"/>
+      </g>
+    </svg>
+    <g font-family="SFMono-Regular, Consolas, Liberation Mono, monospace" fill="#686b65" font-size="10">
+      <text x="20" y="27" letter-spacing="0.4">03 / PHYSICAL WORLD / EMBODIED INTELLIGENCE</text>
+      <text x="20" y="380" letter-spacing="0.8">EML / SYSTEM 03</text>
+    </g>
+
+    <!-- Unchanged 32 × 32 EML header mark, with its original strokes and fills. -->
+    <svg x="648" y="28" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
+      <path d="M5 25V8l11 9L27 6v19" fill="none" stroke="#242623" stroke-width="1.4"/>
+      <g fill="#ce7256" stroke="#242623" stroke-width="1.3">
+        <circle cx="5" cy="8" r="2.5"/>
+        <circle cx="16" cy="17" r="2.5"/>
+        <circle cx="27" cy="6" r="2.5"/>
+        <circle cx="27" cy="25" r="2.5"/>
+      </g>
+    </svg>
+    <g font-family="Helvetica Neue, Helvetica, Arial, sans-serif" fill="#242623">
+      <text x="693" y="40" font-size="14" font-weight="550" letter-spacing="-0.35">Evolving</text>
+      <text x="693" y="56" font-size="14" font-weight="550" letter-spacing="-0.35">Machines Lab</text>
+      <text x="648" y="212" font-size="100" font-weight="500" letter-spacing="-6">Future</text>
+      <text x="650" y="260" font-size="24" letter-spacing="-0.6">An open ecosystem for agentic,</text>
+      <text x="650" y="290" font-size="24" letter-spacing="-0.6">open-ended VLA policies.</text>
+    </g>
+    <circle cx="653" cy="110" r="2.8" fill="#ce7256"/>
+    <text x="665" y="114" font-family="SFMono-Regular, Consolas, Liberation Mono, monospace" font-size="10" font-weight="500" letter-spacing="0.9" fill="#686b65">PHYSICAL WORLD / EMBODIED INTELLIGENCE</text>
+    <g fill="none" stroke="#242623" stroke-opacity="0.13">
+      <rect x="650" y="326" width="89" height="28" rx="14"/>
+      <rect x="747" y="326" width="110" height="28" rx="14"/>
+      <rect x="865" y="326" width="130" height="28" rx="14"/>
+    </g>
+    <g font-family="SFMono-Regular, Consolas, Liberation Mono, monospace" font-size="10" fill="#242623" text-anchor="middle">
+      <text x="694.5" y="344">ECCV 2026</text>
+      <text x="802" y="344">MULTI-ARM VLA</text>
+      <text x="930" y="344">OPEN ECOSYSTEM</text>
     </g>
   </g>
-  <g font-family="Helvetica Neue, Helvetica, Arial, sans-serif" fill="#242623">
-    <text x="103" y="62" font-size="20" font-weight="500">Evolving Machines Lab</text>
-    <text x="48" y="210" font-size="112" font-weight="500" letter-spacing="-6">Future<tspan fill="#ce7256">.</tspan></text>
-    <text x="52" y="259" font-size="26">Compositional robot intelligence.</text>
-  </g>
-  <g font-family="SFMono-Regular, Consolas, Liberation Mono, monospace" font-size="13" fill="#686b65" letter-spacing="1.2">
-    <text x="1152" y="61" text-anchor="end">EML / SYSTEM 03</text>
-    <text x="52" y="299">ATOMIC SKILLS → COLLABORATION → GENERALIZATION</text>
-  </g>
-  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
-    <ellipse cx="930" cy="209" rx="154" ry="117" stroke="#deded6" stroke-width="1"/>
-    <ellipse cx="930" cy="209" rx="117" ry="154" transform="rotate(45 930 209)" stroke="#deded6" stroke-width="1"/>
-    <path d="M775 274L827 164L930 209" stroke="#242623" stroke-width="8"/>
-    <path d="M1085 274L1033 164L930 209" stroke="#ce7256" stroke-width="8"/>
-    <path d="M930 209L930 111M930 209L867 307M930 209L993 307" stroke="#aaa99f" stroke-width="1.5" stroke-dasharray="4 7"/>
-  </g>
-  <g stroke="#f8f7f4" stroke-width="4">
-    <circle cx="775" cy="274" r="10" fill="#242623"/>
-    <circle cx="827" cy="164" r="13" fill="#242623"/>
-    <circle cx="1085" cy="274" r="10" fill="#ce7256"/>
-    <circle cx="1033" cy="164" r="13" fill="#ce7256"/>
-    <circle cx="930" cy="209" r="19" fill="#ce7256"/>
-    <circle cx="930" cy="111" r="7" fill="#aaa99f"/>
-    <circle cx="867" cy="307" r="7" fill="#aaa99f"/>
-    <circle cx="993" cy="307" r="7" fill="#aaa99f"/>
-  </g>
-  <path d="M48 342H1152" stroke="#d6d6cf"/>
-  <g font-family="SFMono-Regular, Consolas, Liberation Mono, monospace" font-size="12" fill="#686b65" letter-spacing="1">
-    <text x="48" y="373">PHYSICAL WORLD / EMBODIED INTELLIGENCE</text>
-    <text x="1152" y="373" text-anchor="end">BUILD WHAT EVOLVES.</text>
-  </g>
+  <rect x="0.5" y="0.5" width="1199" height="399" rx="4" fill="none" stroke="#242623" stroke-opacity="0.13"/>
 </svg>

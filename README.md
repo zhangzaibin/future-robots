@@ -1,16 +1,35 @@
 [![Future — Evolving Machines Lab. Compositional robot intelligence.](docs/media/future-eml-banner.svg)](https://zhangzaibin.github.io/evolving-machines/)
 
-# Future
+<p align="center">
+  <strong>Compositional robot intelligence, from atomic skills to open-ended agents.</strong>
+</p>
 
-**Compositional robot intelligence, from atomic skills to open-ended agents.**
+<p align="center">
+  <a href="https://github.com/zhangzaibin/future-robots"><img src="docs/media/badges/code.svg" alt="Code on GitHub" height="24"></a>
+  <a href="https://arxiv.org/abs/2608.25864"><img src="docs/media/badges/ma-vla.svg" alt="MA-VLA paper on arXiv" height="24"></a>
+  <a href="https://arxiv.org/abs/2610.06184"><img src="docs/media/badges/ae-vla.svg" alt="AE-VLA paper on arXiv" height="24"></a>
+  <a href="https://huggingface.co/datasets/MrBean2024/macg_data"><img src="docs/media/badges/data.svg" alt="Training data on Hugging Face" height="24"></a>
+  <a href="https://huggingface.co/MrBean2024/AE-VLA-full"><img src="docs/media/badges/model.svg" alt="AE-VLA model on Hugging Face" height="24"></a>
+</p>
 
-[**Evolving Machines Lab**](https://zhangzaibin.github.io/evolving-machines/) · [MA-VLA paper](https://arxiv.org/abs/2608.25864) · [AE-VLA paper](https://arxiv.org/abs/2610.06184) · [Dataset](https://huggingface.co/datasets/MrBean2024/macg_data) · [Model](https://huggingface.co/MrBean2024/AE-VLA-full) · [Research film & blog](https://zhangzaibin.github.io/evolving-machines/research/arm-wise-cg/)
+<p align="center">
+  <a href="https://zhangzaibin.github.io/evolving-machines/"><strong>Evolving Machines Lab</strong></a>
+  &nbsp; · &nbsp;
+  <a href="https://zhangzaibin.github.io/evolving-machines/research/arm-wise-cg/">▶ Film &amp; blog</a>
+</p>
 
-**Future** is the embodied-intelligence research ecosystem of **[Evolving Machines Lab](https://zhangzaibin.github.io/evolving-machines/)**. We study how robots can reuse atomic skills, assign them to different arms, and compose them under new task and coordination requirements. Our long-term goal is **agentic, open-ended vision-language-action (VLA) policies** that connect task decomposition, compositional execution, and feedback.
+**Future** brings together **MA-VLA** (ECCV 2026) and **ACG-Bench / AE-VLA** (arXiv 2026), with public training data, model weights, and tools for compositional robot learning. We study how robots reuse atomic skills, assign them to different arms, and coordinate them in unfamiliar tasks.
 
-This repository brings together **MA-VLA** (ECCV 2026) and **ACG-Bench / AE-VLA** (arXiv 2026), with training recipes, attention and SkillLoRA ablations, data preparation, and policy serving. The current benchmark studies execution with supplied per-arm prompts; high-level autonomous planning remains a research direction.
+Our long-term goal is **agentic, open-ended VLA policies** that connect task decomposition, execution, and feedback. The current benchmark studies execution with supplied per-arm prompts; autonomous planning remains a research direction.
 
-[Research](#research) · [Public resources](#public-resources) · [Quick start](#quick-start) · [Evaluation](#evaluation) · [Documentation](#documentation) · [Citation](#citation)
+<p align="center">
+  <a href="#research">Research</a> &nbsp; / &nbsp;
+  <a href="#public-resources">Resources</a> &nbsp; / &nbsp;
+  <a href="#quick-start">Quick start</a> &nbsp; / &nbsp;
+  <a href="#evaluation">Results</a> &nbsp; / &nbsp;
+  <a href="#documentation">Docs</a> &nbsp; / &nbsp;
+  <a href="#citation">Cite</a>
+</p>
 
 ## Research
 
@@ -32,15 +51,17 @@ The full model combines all three. See the [research blog and demonstrations](ht
 
 ## Public resources
 
-| Resource | Link | Contents |
-| --- | --- | --- |
-| **Training data** | [MrBean2024/macg_data](https://huggingface.co/datasets/MrBean2024/macg_data) | Converted multi-task LeRobot data, per-arm instructions, phase annotations, and SkillLoRA labels |
-| **AE-VLA checkpoint** | [MrBean2024/AE-VLA-full](https://huggingface.co/MrBean2024/AE-VLA-full) | Full SkillLoRA + arm-wise attention checkpoint, with parameters and normalization assets |
-| **MA-VLA paper** | [arXiv:2608.25864](https://arxiv.org/abs/2608.25864) | Multi-arm collaboration and compositional generalization · ECCV 2026 |
-| **ACG-Bench / AE-VLA paper** | [arXiv:2610.06184](https://arxiv.org/abs/2610.06184) | Benchmark, architecture study, and simulation / real-robot evaluation |
-| **Research film & blog** | [Evolving Machines Lab](https://zhangzaibin.github.io/evolving-machines/research/arm-wise-cg/) | Method overview and simulation / SO101 demonstrations |
+| Resource | What's included |
+| --- | --- |
+| [🤗 **Training data**](https://huggingface.co/datasets/MrBean2024/macg_data) | LeRobot trajectories, per-arm instructions, phase annotations, and SkillLoRA labels |
+| [🤗 **AE-VLA model**](https://huggingface.co/MrBean2024/AE-VLA-full) | Full model parameters and normalization assets |
+| [📄 **MA-VLA paper**](https://arxiv.org/abs/2608.25864) | Multi-arm collaboration and compositional generalization · ECCV 2026 |
+| [📄 **AE-VLA paper**](https://arxiv.org/abs/2610.06184) | ACG-Bench, architecture study, and evaluation |
+| [▶ **Film & blog**](https://zhangzaibin.github.io/evolving-machines/research/arm-wise-cg/) | Method walkthrough and simulation / SO101 demonstrations |
 
-The public dataset contains **700 episodes / 395,759 frames at 30 FPS**, with three RGB views, two arms' joint and gripper states, 16-dimensional actions, and phase labels. Its [metadata](https://huggingface.co/datasets/MrBean2024/macg_data/blob/main/meta/info.json) identifies LeRobot **v2.1** format and a training split; the 34 task entries are instruction entries, not the number of benchmark task families. Images are embedded in parquet files. See [data preparation](docs/data.md#public-training-dataset) for the file layout.
+**700 episodes · 395,759 frames · 30 FPS · 3 RGB views**
+
+The dataset uses LeRobot **v2.1**, with joint and gripper states for both arms, 16-dimensional actions, phase labels, and images embedded in parquet files. Its 34 task entries represent instructions, not benchmark task families. See the [dataset metadata](https://huggingface.co/datasets/MrBean2024/macg_data/blob/main/meta/info.json) and [data guide](docs/data.md#public-training-dataset) for the training split and file layout.
 
 ## Quick start
 
@@ -87,17 +108,27 @@ EXP_NAME=aevla_full_run1 bash scripts/macg_new/train_skill_lora.sh
 EXP_NAME=mavla_run1 bash scripts/macg_new/train_mavla.sh
 ```
 
-Choose a matched baseline or ablation as needed:
+<details>
+<summary><strong>Baselines and ablations</strong></summary>
 
-| Model / variant | Launcher | Configuration |
-| --- | --- | --- |
-| **Full AE-VLA** | `scripts/macg_new/train_skill_lora.sh` | `aevla_pi05_skill_lora_two_arms_multitask` |
-| **MA-VLA** | `scripts/macg_new/train_mavla.sh` | `pi05_two_arms_multi_task_mavla_shuffle06_mask04` |
-| Arm-token grouping + arm-wise attention, without SkillLoRA | `scripts/macg_new/train_aevla.sh` | `aevla_pi05_two_arms_multi_task` |
-| Arm-token grouping with full attention, without SkillLoRA | `scripts/macg_new/train_tokengrouponly.sh` | `aevla_pi05_two_arms_multi_task_full_attn` |
-| SkillLoRA with full attention | `scripts/macg_new/train_fullattn.sh` | `aevla_pi05_skill_lora_two_arms_multitask_full_attn` |
-| Unified Pi0.5 | `scripts/macg_new/pi05/train.sh` | `pi05_two_arms_multi_task` |
-| Separate Pi0.5, left / right | [Per-arm launchers](docs/training.md#separate-pi05) | `pi05_single_arm_left_multi_task` / `pi05_single_arm_right_multi_task` |
+<br>
+
+**Models and baselines**
+
+- **Full AE-VLA** — arm-token grouping, SkillLoRA, and arm-wise attention. [Training script](scripts/macg_new/train_skill_lora.sh)
+- **MA-VLA** — atomic instructions, arm shuffle, and image masking. [Training script](scripts/macg_new/train_mavla.sh)
+- **Unified Pi0.5** — one policy for both arms. [Training script](scripts/macg_new/pi05/train.sh)
+- **Separate Pi0.5** — an independent policy per arm. [Left arm](scripts/macg_new/per-arm-policy/train_pi05_single_arm_left_multi_task.sh) · [Right arm](scripts/macg_new/per-arm-policy/train_pi05_single_arm_right_multi_task.sh)
+
+**Architecture ablations**
+
+- **Grouping + arm-wise attention** — without SkillLoRA. [Training script](scripts/macg_new/train_aevla.sh)
+- **Grouping only** — full attention, without SkillLoRA. [Training script](scripts/macg_new/train_tokengrouponly.sh)
+- **Grouping + SkillLoRA** — full attention. [Training script](scripts/macg_new/train_fullattn.sh)
+
+Exact configuration names and settings are listed in the [training guide](docs/training.md).
+
+</details>
 
 Each recipe computes normalization statistics before training. These multi-task configs default to **30,000 steps, global batch size 32, and two FSDP devices**. Existing experiments are preserved by default; use `--resume` to continue a run. See [common options](docs/training.md#common-options) for dataset overrides, single-GPU settings, seeds, and logging.
 
@@ -136,28 +167,29 @@ The HTTP server defaults to `127.0.0.1:20011`; `GET /health` reports model statu
 
 Reported mean success on unseen conditions:
 
-| Policy | Simulation · 17 conditions | SO101 robots · 5 conditions |
+| Policy | Simulation | SO101 robots |
 | --- | ---: | ---: |
 | Single Pi0.5 | 2.94% | 2.00% |
-| MA-VLA, adapted to Pi0.5 | 3.06% | 6.00% |
+| MA-VLA (Pi0.5) | 3.06% | 6.00% |
 | Dual Pi0.5 | 5.53% | 10.00% |
 | **AE-VLA** | **21.53%** | **39.00%** |
 
-These are published results from the [AE-VLA paper](https://arxiv.org/abs/2610.06184) and [lab's experiment summary](https://zhangzaibin.github.io/evolving-machines/research/arm-wise-cg/), not measurements produced by this checkout. Simulation and real-robot conditions differ. The repository provides training and serving entry points; the complete benchmark rollout harness and explicit held-out split manifest are not bundled. See the [evaluation guide](docs/evaluation.md) for release scope and experiment records.
+Results average **17 unseen simulation conditions** and **5 unseen SO101 conditions**, respectively. The conditions differ between settings. Sources: [AE-VLA paper](https://arxiv.org/abs/2610.06184) · [Experiment summary](https://zhangzaibin.github.io/evolving-machines/research/arm-wise-cg/).
+
+The repository provides training and serving entry points; the complete benchmark rollout harness and explicit held-out split manifest are not bundled. See the [evaluation guide](docs/evaluation.md) for release scope and experiment records.
 
 ## Documentation
 
-| I want to… | Start here |
+| Workflow | Guides |
 | --- | --- |
-| Set up GPUs, pretrained weights, or an offline tokenizer | [Installation and paths](docs/installation.md) |
-| Download data, convert trajectories, or merge multi-task data | [Data preparation](docs/data.md) |
-| Compute statistics without mixing arms or augmentations | [Normalization](docs/data.md#normalization) |
-| Train models or compare attention / SkillLoRA ablations | [Training recipes](docs/training.md) · [SkillLoRA design](docs/skill_lora.md) |
-| Define held-out compositions and report evaluation | [Evaluation protocol](docs/evaluation.md) |
-| Train on SO101 / Bi-SO100 or fine-tune towel folding | [Real-world workflows](docs/real_world.md) |
-| Serve a checkpoint or independent per-arm policies | [Deployment](docs/deployment.md) |
-| Find model implementations and earlier experiments | [Documentation index and code map](docs/README.md#code-map) |
-| Contribute or prepare a public code snapshot | [Contributing](CONTRIBUTING.md) · [Publishing](docs/publishing.md) |
+| **Setup** | [Installation, GPUs, and paths](docs/installation.md) |
+| **Data** | [Preparation](docs/data.md) · [Normalization](docs/data.md#normalization) |
+| **Training** | [Recipes and ablations](docs/training.md) · [SkillLoRA](docs/skill_lora.md) |
+| **Evaluation** | [Protocol and experiment records](docs/evaluation.md) |
+| **Real robots** | [SO101, Bi-SO100, and towel folding](docs/real_world.md) |
+| **Inference** | [Checkpoint deployment](docs/deployment.md) |
+| **Code** | [Documentation index](docs/README.md) · [Code map](docs/README.md#code-map) |
+| **Contribute** | [Contributing](CONTRIBUTING.md) · [Publishing](docs/publishing.md) |
 
 ## Citation
 
@@ -187,8 +219,8 @@ Future builds on [OpenPI](https://github.com/Physical-Intelligence/openpi), [LeR
 
 ---
 
-**Build what evolves.**
-
-[Evolving Machines Lab](https://zhangzaibin.github.io/evolving-machines/) · Digital intelligence × Embodied intelligence
-
-[Research and projects](https://zhangzaibin.github.io/evolving-machines/) · [Contact](mailto:dlutzzb@gmail.com)
+<p align="center">
+  <strong>Build what evolves.</strong><br>
+  <a href="https://zhangzaibin.github.io/evolving-machines/">Evolving Machines Lab</a> · Digital intelligence × Embodied intelligence<br>
+  <a href="https://zhangzaibin.github.io/evolving-machines/">Research &amp; projects</a> · <a href="mailto:dlutzzb@gmail.com">Contact</a>
+</p>
