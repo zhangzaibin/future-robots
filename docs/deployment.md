@@ -4,6 +4,17 @@
 
 Use the exact training configuration and a complete checkpoint **step directory**, including `params/` and `assets/`. Inference loads statistics from the checkpoint. Stochastic training augmentation is disabled during inference, preserving physical arm order.
 
+## Released MA-VLA checkpoint
+
+The public [**MrBean2024/MA-VLA-pi05-shuffle06-mask04**](https://huggingface.co/MrBean2024/MA-VLA-pi05-shuffle06-mask04) model uses `pi05_two_arms_multi_task_mavla_shuffle06_mask04`: the two-arm Pi0.5 MA-VLA recipe with arm shuffle probability 0.6 and image masking probability 0.4 during training. Follow the [README download command](../README.md#4-run-the-released-checkpoint), then serve it with:
+
+```bash
+CHECKPOINT_DIR=checkpoints/MA-VLA-pi05-shuffle06-mask04/29999 \
+  PORT=20011 bash scripts/serve_recipe.sh pi05_two_arms_multi_task_mavla_shuffle06_mask04
+```
+
+The Hub download contains `29999/params/` and `29999/assets/multi_task_combined/norm_stats.json`. The step directory is directly under the download root. This checkpoint uses the simulation two-arm layout (7 joints + 1 gripper per arm). The server loads its own normalization assets; the training dataset is not required, and arm shuffle and image masking are disabled for inference. Use a different `PORT` when running alongside another policy server.
+
 ## Released AE-VLA checkpoint
 
 The public [**MrBean2024/AE-VLA-full**](https://huggingface.co/MrBean2024/AE-VLA-full) model uses `aevla_pi05_skill_lora_two_arms_multitask` (arm-token grouping, SkillLoRA, and arm-wise attention). Follow the [README download command](../README.md#4-run-the-released-checkpoint), then serve the included step directory:

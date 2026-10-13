@@ -16,6 +16,8 @@ It selects `pi05_two_arms_multi_task_mavla_shuffle06_mask04`: a standard Pi0.5 b
 
 This is the current two-arm, multi-task Pi0.5 implementation of the MA-VLA recipe. The paper also covers other settings; do not treat this single command as reproduction of every paper table.
 
+The trained weights are available as [MrBean2024/MA-VLA-pi05-shuffle06-mask04](https://huggingface.co/MrBean2024/MA-VLA-pi05-shuffle06-mask04). To run them directly, follow [released MA-VLA checkpoint deployment](deployment.md#released-ma-vla-checkpoint).
+
 ## AE-VLA
 
 The [AE-VLA paper](https://arxiv.org/abs/2610.06184) combines arm-token grouping, SkillLoRA, and arm-wise attention. The **full model** uses `Pi0SkillLoRAComposerConfig`; this is also the architecture of the [public checkpoint](https://huggingface.co/MrBean2024/AE-VLA-full):

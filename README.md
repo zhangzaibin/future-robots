@@ -8,7 +8,11 @@
   <a href="https://github.com/zhangzaibin/future-robots"><img src="docs/media/badges/code.svg" alt="Code on GitHub" height="24"></a>
   <a href="https://arxiv.org/abs/2608.25864"><img src="docs/media/badges/ma-vla.svg" alt="MA-VLA paper on arXiv" height="24"></a>
   <a href="https://arxiv.org/abs/2610.06184"><img src="docs/media/badges/ae-vla.svg" alt="AE-VLA paper on arXiv" height="24"></a>
+</p>
+
+<p align="center">
   <a href="https://huggingface.co/datasets/MrBean2024/macg_data"><img src="docs/media/badges/data.svg" alt="Training data on Hugging Face" height="24"></a>
+  <a href="https://huggingface.co/MrBean2024/MA-VLA-pi05-shuffle06-mask04"><img src="docs/media/badges/ma-vla-model.svg" alt="MA-VLA model on Hugging Face" height="24"></a>
   <a href="https://huggingface.co/MrBean2024/AE-VLA-full"><img src="docs/media/badges/model.svg" alt="AE-VLA model on Hugging Face" height="24"></a>
 </p>
 
@@ -37,7 +41,7 @@ Our long-term goal is **agentic, open-ended VLA policies** that connect task dec
 
 [**MA-VLA: Multi-arm Vision-Language-Action Model for Collaboration and Compositional Generalization**](https://arxiv.org/abs/2608.25864) introduces atomic action assignment: cooperative tasks are expressed as mid-level instructions for individual arms. **Arm Shuffle** permutes arm observations, states, and assigned prompts during training to support reuse beyond fixed execution roles. Published at **ECCV 2026**.
 
-The repository's [MA-VLA recipe](docs/training.md#ma-vla) uses a Pi0.5 backbone with phase-derived atomic instructions, arm shuffling, and image masking. It is the current two-arm multi-task implementation; the paper also studies other settings.
+The repository's [MA-VLA recipe](docs/training.md#ma-vla) uses a Pi0.5 backbone with phase-derived atomic instructions, arm shuffling, and image masking. Its [released checkpoint](https://huggingface.co/MrBean2024/MA-VLA-pi05-shuffle06-mask04) uses arm shuffle probability **0.6** and image masking probability **0.4**. This is the current two-arm multi-task implementation; the paper also studies other settings.
 
 ### ACG-Bench / AE-VLA · Arm-wise composition
 
@@ -54,6 +58,7 @@ The full model combines all three. See the [research blog and demonstrations](ht
 | Resource | What's included |
 | --- | --- |
 | [🤗 **Training data**](https://huggingface.co/datasets/MrBean2024/macg_data) | LeRobot trajectories, per-arm instructions, phase annotations, and SkillLoRA labels |
+| [🤗 **MA-VLA model**](https://huggingface.co/MrBean2024/MA-VLA-pi05-shuffle06-mask04) | Pi0.5 checkpoint with shuffle 0.6 / mask 0.4, plus normalization assets |
 | [🤗 **AE-VLA model**](https://huggingface.co/MrBean2024/AE-VLA-full) | Full model parameters and normalization assets |
 | [📄 **MA-VLA paper**](https://arxiv.org/abs/2608.25864) | Multi-arm collaboration and compositional generalization · ECCV 2026 |
 | [📄 **AE-VLA paper**](https://arxiv.org/abs/2610.06184) | ACG-Bench, architecture study, and evaluation |
@@ -134,7 +139,37 @@ Each recipe computes normalization statistics before training. These multi-task 
 
 ### 4. Run the released checkpoint
 
-To use pretrained AE-VLA, download the model and serve it directly. Training and a local copy of the training dataset are not required for this serving path.
+Choose a released model below. After installation, either checkpoint can be served directly without training or a local copy of the training dataset.
+
+<details>
+<summary><strong>MA-VLA · Pi0.5, shuffle 0.6 / mask 0.4</strong></summary>
+
+<br>
+
+Download [MrBean2024/MA-VLA-pi05-shuffle06-mask04](https://huggingface.co/MrBean2024/MA-VLA-pi05-shuffle06-mask04) and use the matching MA-VLA configuration:
+
+```bash
+uv run python - <<'PY'
+from huggingface_hub import snapshot_download
+
+snapshot_download(
+    repo_id="MrBean2024/MA-VLA-pi05-shuffle06-mask04",
+    local_dir="checkpoints/MA-VLA-pi05-shuffle06-mask04",
+)
+PY
+
+CHECKPOINT_DIR=checkpoints/MA-VLA-pi05-shuffle06-mask04/29999 \
+  PORT=20011 bash scripts/serve_recipe.sh pi05_two_arms_multi_task_mavla_shuffle06_mask04
+```
+
+The upload contains `29999/params/` and `29999/assets/multi_task_combined/norm_stats.json`. Use the `29999` step directory with configuration `pi05_two_arms_multi_task_mavla_shuffle06_mask04`. Arm shuffling and image masking are training augmentations; they are disabled during inference.
+
+</details>
+
+<details open>
+<summary><strong>AE-VLA · Full model with SkillLoRA and arm-wise attention</strong></summary>
+
+<br>
 
 ```bash
 uv run python - <<'PY'
@@ -150,7 +185,11 @@ CHECKPOINT_DIR=checkpoints/AE-VLA-full/aevla_pi05_skill_lora_two_arms_multitask/
   PORT=20011 bash scripts/serve_recipe.sh aevla_pi05_skill_lora_two_arms_multitask
 ```
 
-The checkpoint path must point to the **step directory containing `params/` and `assets/`**. The public model uses `aevla_pi05_skill_lora_two_arms_multitask`; select that same configuration for serving. The server loads checkpoint normalization assets and skips training-only SkillLoRA label loading.
+The public AE-VLA model uses `aevla_pi05_skill_lora_two_arms_multitask`; select that same configuration for serving. The server loads checkpoint normalization assets and skips training-only SkillLoRA label loading.
+
+</details>
+
+For either model, the checkpoint path must point to the **step directory containing `params/` and `assets/`**. Each model uses its own normalization assets. To serve both simultaneously, assign different ports using `PORT`.
 
 The HTTP server defaults to `127.0.0.1:20011`; `GET /health` reports model status. Connect a compatible robot or simulator client to execute actions. See [deployment](docs/deployment.md) for the observation format, trusted-network HTTP protocol, separate-arm policies, and WebSocket options.
 
