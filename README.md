@@ -60,6 +60,7 @@ The full model combines all three. See the [research blog and demonstrations](ht
 | [🤗 **Training data**](https://huggingface.co/datasets/MrBean2024/macg_data) | LeRobot trajectories, per-arm instructions, phase annotations, and SkillLoRA labels |
 | [🤗 **MA-VLA model**](https://huggingface.co/MrBean2024/MA-VLA-pi05-shuffle06-mask04) | Pi0.5 checkpoint with shuffle 0.6 / mask 0.4, plus normalization assets |
 | [🤗 **AE-VLA model**](https://huggingface.co/MrBean2024/AE-VLA-full) | Full model parameters and normalization assets |
+| [🧪 **Evaluation code**](https://github.com/zhangzaibin/future-robots-eval) | Public evaluation code for the benchmark |
 | [📄 **MA-VLA paper**](https://arxiv.org/abs/2608.25864) | Multi-arm collaboration and compositional generalization · ECCV 2026 |
 | [📄 **AE-VLA paper**](https://arxiv.org/abs/2610.06184) | ACG-Bench, architecture study, and evaluation |
 | [▶ **Film & blog**](https://zhangzaibin.github.io/evolving-machines/research/arm-wise-cg/) | Method walkthrough and simulation / SO101 demonstrations |
@@ -215,7 +216,7 @@ Reported mean success on unseen conditions:
 
 Results average **17 unseen simulation conditions** and **5 unseen SO101 conditions**, respectively. The conditions differ between settings. Sources: [AE-VLA paper](https://arxiv.org/abs/2610.06184) · [Experiment summary](https://zhangzaibin.github.io/evolving-machines/research/arm-wise-cg/).
 
-The repository provides training and serving entry points; the complete benchmark rollout harness and explicit held-out split manifest are not bundled. See the [evaluation guide](docs/evaluation.md) for release scope and experiment records.
+The evaluation code is publicly available in the [**future-robots-eval** repository](https://github.com/zhangzaibin/future-robots-eval). See the [evaluation guide](docs/evaluation.md) for release scope and experiment records.
 
 ## Documentation
 
